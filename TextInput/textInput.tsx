@@ -9,7 +9,7 @@ interface TextInputProps {
 	min?: string
 	max?: string
 	isRequired?: string
-	placeholderText?: string
+	placeholder?: string
 	onValueChange: (value: string) => void
 }
 
@@ -20,7 +20,6 @@ export const TextInput = ({
 	min, 
 	max, 
 	isRequired, 
-	placeholderText,
 	onValueChange, 
 	...props}: TextInputProps) => {
 	const [value, setValue] = useState<string>("");
@@ -32,6 +31,6 @@ export const TextInput = ({
 
 	return <div className={clsx("td-input-container", isLabelCapitalized && "cap-label")}>
 		{label && <label>{label}</label>}
-		<input type={type} placeholder={placeholderText && placeholderText} onChange={(e) => handleValueChange(e)} value={value}/>
+		<input type={type} placeholder={props.placeholder} onChange={(e) => handleValueChange(e)} value={value}/>
 	</div>
 }
