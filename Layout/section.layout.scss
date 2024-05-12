@@ -1,0 +1,26 @@
+@import "../scss/utility.imports";
+
+.td-section-layout {
+	padding: rem(30px);
+	margin: {
+		bottom: rem(30px);
+	}
+	background: {
+		repeat: no-repeat;
+		size: cover;
+		position: 50%;
+	}
+	&.light-text {
+		color: #fff;
+	}
+	.content-wrapper {
+		max-width: rem(1366px);
+		width: 100%;
+		margin: 0 auto;
+		background: {
+			repeat: no-repeat;
+			size: cover;
+			position: 50%;
+		}
+	}
+}
