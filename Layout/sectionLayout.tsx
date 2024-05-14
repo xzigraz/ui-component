@@ -9,6 +9,7 @@ interface SectionLayoutProps {
 	id?: string
 	isBgFullWidth?: boolean
 	isDarkBG?: boolean
+	height?: string
 	handleFullBannerClick?: () => void
 	handleMouseEnter?: () => void
 	handleMouseLeave?: () => void
@@ -21,13 +22,14 @@ export const SectionLayout = ({
 	id, 
 	isBgFullWidth = true, 
 	isDarkBG = false,
+	height,
 	handleFullBannerClick,
 	handleMouseEnter,
 	handleMouseLeave}: SectionLayoutProps) => {
 	return <div 
 		className={clsx("td-section-layout", className && className, isDarkBG && "light-text")} 
 		id={id && id} 
-		style={{backgroundImage: bgImg && isBgFullWidth ? `url(${bgImg})` : "none"}}
+		style={{backgroundImage: bgImg && isBgFullWidth ? `url(${bgImg})` : "none", height: height ? `${height}`: `auto`}}
 		onClick={() => handleFullBannerClick && handleFullBannerClick()}
 		onMouseEnter={() => handleMouseEnter && handleMouseEnter()}
 		onMouseLeave={() => handleMouseLeave && handleMouseLeave()}>
