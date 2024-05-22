@@ -1,0 +1,17 @@
+@import "../scss/utility.imports";
+
+$dotSize: 14px;
+
+.td-loading {
+	display: flex;
+	align-items: center;
+	gap: rem(5px);
+	.dot {
+		width: rem($dotSize);
+		height: rem($dotSize);
+		border-radius: rem($dotSize);
+		background: {
+			color: #000;
+		}
+	}
+}
