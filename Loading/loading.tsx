@@ -2,11 +2,10 @@ import React from "react";
 import clsx from "clsx";
 import "./loading.scss";
 
-interface LoadingProps {
-	children?: React.ReactElement
+export interface LoadingProps {
 	classes?: string
 	loadingPlacement?: "page" | "action"
-	repeat?: 2 | 3 | 4 | 5
+	repeat?: 2 | 3 | 4 | 5 | 8
 	style?: "wave" | "rotate"
 }
 
@@ -18,13 +17,15 @@ interface LoadingProps {
  * @returns The loading component.
  */
 export const Loading = ({
-	children,
 	classes, 
 	loadingPlacement = "page",
 	repeat = 3,
 	style = "wave"
 }: LoadingProps) => {
-	return <div className={clsx("td-loading", style && style)}>
-		{[...Array(repeat)].map((element, index) => <div key={index} className={clsx(classes ? classes : "dot")}>{element && element}</div>)}
-	</div>
+	return <>
+		<div className={clsx("td-loading", style && style, loadingPlacement === "page" && "td-loading-whole")}>
+			{[...Array(style === "rotate" ? 8 : repeat)].map((element, index) => <div key={index} className={clsx(classes ? classes : "dot")}>{element && element}</div>)}
+		</div>
+		{loadingPlacement === "page" && <div className={clsx("td-loading-mask")} />}
+	</>
 }
