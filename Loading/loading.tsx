@@ -6,7 +6,8 @@ interface LoadingProps {
 	children?: React.ReactElement
 	classes?: string
 	loadingPlacement?: "page" | "action"
-	repeat?: number
+	repeat?: 2 | 3 | 4 | 5
+	style?: "wave" | "rotate"
 }
 
 /**
@@ -20,9 +21,10 @@ export const Loading = ({
 	children,
 	classes, 
 	loadingPlacement = "page",
-	repeat = 3
+	repeat = 3,
+	style = "wave"
 }: LoadingProps) => {
-	return <div className="td-loading">
+	return <div className={clsx("td-loading", style && style)}>
 		{[...Array(repeat)].map((element, index) => <div key={index} className={clsx(classes ? classes : "dot")}>{element && element}</div>)}
 	</div>
 }
