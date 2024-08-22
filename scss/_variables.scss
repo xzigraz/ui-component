@@ -1,7 +1,25 @@
 $titleFont: "lato", sans-serif;
 $bodyFont: "Noto Sans Display", sans-serif;
-$mainColor: #ff4f79;
-$secondaryColor: #7eb2dd;
-$tertiaryColor: #17183b;
-$quaternaryColor: #ffa0fd;
-$quinaryColor: #fcecc9;
+
+$cp11: #ff4f79;
+$cp12: #7eb2dd;
+$cp13: #17183b;
+$cp14: #ffa0fd;
+$cp15: #fcecc9;
+
+$cp21: #FF0022;
+$cp22: #011627;
+$cp23: #41EAD4;
+$cp24: #B91372;
+$cp25: #FDFFFC;
+
+// $primaryColor: $cp11;
+// $secondaryColor: $cp12;
+// $tertiaryColor: $cp13;
+// $quaternaryColor: $cp14;
+// $quinaryColor: $cp15;
+$primaryColor: $cp21;
+$secondaryColor: $cp22;
+$tertiaryColor: $cp23;
+$quaternaryColor: $cp24;
+$quinaryColor: $cp15;
