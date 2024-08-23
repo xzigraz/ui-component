@@ -1,6 +1,6 @@
 'use client';
 
-import React, { ReactElement } from "react";
+import React, { ReactElement, forwardRef } from "react";
 import clsx from "clsx";
 import "./section.layout.scss";
 
@@ -17,26 +17,27 @@ interface SectionLayoutProps {
 	handleMouseLeave?: () => void
 }
 
-export const SectionLayout = ({
-	children, 
-	className,
-	bgImg,
-	id, 
-	isBgFullWidth = true, 
-	isDarkBG = false,
-	height,
-	handleFullBannerClick,
-	handleMouseEnter,
-	handleMouseLeave}: SectionLayoutProps) => {
-	return <div 
-		className={clsx("td-section-layout", className && className, isDarkBG && "light-text")} 
-		id={id && id} 
-		style={{backgroundImage: bgImg && isBgFullWidth ? `url(${bgImg})` : "none", height: height ? `${height}`: `auto`}}
+export const SectionLayout = forwardRef<HTMLDivElement, SectionLayoutProps>((props, ref) => {
+	const {children, 
+		className, 
+		bgImg, 
+		id, 
+		isBgFullWidth, 
+		isDarkBG, 
+		height, 
+		handleFullBannerClick, 
+		handleMouseEnter, 
+		handleMouseLeave } = props;
+	return <div
+		className={clsx("td-section-layout", className && className, isDarkBG && "light-text")}
+		id={id && id}
+		style={{ backgroundImage: bgImg && isBgFullWidth ? `url(${bgImg})` : "none", height: height ? `${height}` : `auto` }}
+		ref={ref}
 		onClick={() => handleFullBannerClick && handleFullBannerClick()}
 		onMouseEnter={() => handleMouseEnter && handleMouseEnter()}
 		onMouseLeave={() => handleMouseLeave && handleMouseLeave()}>
-		<div className="content-wrapper" style={{backgroundImage: bgImg && !isBgFullWidth ? `url(${bgImg})` : "none"}}>
+		<div className="content-wrapper" style={{ backgroundImage: bgImg && !isBgFullWidth ? `url(${bgImg})` : "none" }}>
 			{React.Children.map(children, child => child)}
 		</div>
 	</div>;
-}
+})
