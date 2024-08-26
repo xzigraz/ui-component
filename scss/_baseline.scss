@@ -1,3 +1,5 @@
+@import "./_utility.imports.scss";
+
 * {
 	box-sizing: border-box;
 }
@@ -10,5 +12,11 @@ h5,
 h6 {
 	margin: {
 		top: 0;
+	}
+}
+
+.mb-40 {
+	margin: {
+		bottom: rem(40p);
 	}
 }
