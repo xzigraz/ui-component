@@ -8,27 +8,50 @@
 			text-transform: uppercase;
 		}
 	}
-	label {
-		font: {
-			family: $titleFont;
-			size: rem(20px);
-			weight: 700;
-		}
-		color: #333;
-		&:has(+ input) {
-			margin: {
-				bottom: rem(5px);
+	&.is-required {
+		label {
+			color: $primaryColor;
+			svg {
+				path {
+					fill: $primaryColor;
+				}
 			}
 		}
 	}
-	input {
+	label {
+		display: flex;
+		font: {
+			family: $titleFont;
+			size: rem(20);
+			weight: 700;
+		}
+		color: $secondaryColor;
+		text-transform: uppercase;
+		&:has(+ input) {
+			margin: {
+				bottom: rem(5);
+			}
+		}
+		svg {
+			width: rem(10);
+			margin: {
+				right: rem(5);
+			}
+		}
+	}
+	input,
+	textarea {
 		font: {
 			family: $bodyFont;
-			size: rem(24px);
+			size: rem(24);
 		}
 		color: #111;
 		border-radius: 0;
-		border: rem(1px) solid #bababa;
-		padding: rem(8px) rem(10px);
+		border: rem(1) solid #bababa;
+		padding: rem(8) rem(10);
+		&:focus {
+			outline: none;
+			box-shadow: 0 0 0 rem(1) rgba($secondaryColor, 0.8);
+		}
 	}
 }

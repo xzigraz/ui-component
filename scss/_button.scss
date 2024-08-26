@@ -1,0 +1,34 @@
+@import "./utility.imports";
+.td-button {
+	border: 0;
+	width: max-content;
+	padding: rem(14) rem(30) rem(10);
+	font: {
+		size: rem(24);
+		weight: 700;
+	}
+	text-transform: uppercase;
+	box-shadow: rem(2) rem(2) rem(2) rgba($secondaryColor, 0.8);
+	cursor: pointer;
+	&.primary {
+		background: {
+			color: $primaryColor;
+		}
+		color: $quinaryColor;
+	}
+	&.secondary {
+		background: {
+			color: $secondaryColor;
+		}
+		color: #fff;
+	}
+	&.tertiary {
+		background: {
+			color: $quaternaryColor;
+		}
+		color: $quinaryColor;
+	}
+	&.round-corner {
+		border-radius: rem(6);
+	}
+}
