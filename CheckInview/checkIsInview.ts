@@ -10,17 +10,17 @@ const isRefInView = (ref: React.RefObject<HTMLElement>) => {
 
 	useEffect(() => {
 		const handleScroll = () => {
-			if (ref.current) {
-				const rect = ref.current.getBoundingClientRect();
-				const inView = (
-					rect.top >= 0 &&
-					rect.left >= 0 &&
-					rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-					rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-				);
-				setIsInView(inView);
+			const observer = new IntersectionObserver(([entry]) => {
+				if (entry.isIntersecting) {
+					setIsInView(entry.isIntersecting);
+					observer.unobserve(entry.target);
+				}
+			}, {threshold: 0.15});
 
-				if (inView) {
+			if (ref.current) {
+				observer.observe(ref.current);
+
+				if (isInView) {
 					window.removeEventListener('scroll', handleScroll);
 				}
 			}
