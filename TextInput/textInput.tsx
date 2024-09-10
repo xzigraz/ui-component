@@ -14,7 +14,8 @@ interface TextInputProps {
 	isTextArea?: boolean
 	textAreaRows?: number
 	placeholder?: string
-	onValueChange: (value: string) => void
+	value?: string
+	onValueChange: (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => void
 }
 
 export const TextInput = ({
@@ -27,20 +28,20 @@ export const TextInput = ({
 	isRequired = false, 
 	isTextArea = false,
 	textAreaRows = 4,
+	placeholder,
+	value,
 	onValueChange, 
 	...props}: TextInputProps) => {
-	const [value, setValue] = useState<string>("");
 
 	const handleValueChange = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
-		setValue(e.target.value);
-		onValueChange(e.target.value);
+		onValueChange(e);
 	}
 
 	return <div className={clsx("td-input-container", isLabelCapitalized && "cap-label", isRequired && "is-required")}>
 		{label && <label>{isRequired && <Asterisk />}{label}</label>}
 		{isTextArea 
-			? <textarea name={name} placeholder={props.placeholder} rows={textAreaRows} onChange={(e) => handleValueChange(e)} value={value}/>
-			: <input name={name} type={type} placeholder={props.placeholder} onChange={(e) => handleValueChange(e)} value={value}/>
+			? <textarea name={name} placeholder={placeholder} rows={textAreaRows} onChange={(e) => handleValueChange(e)} value={value}/>
+			: <input name={name} type={type} placeholder={placeholder} onChange={(e) => handleValueChange(e)} value={value}/>
 		}
 	</div>
 }
