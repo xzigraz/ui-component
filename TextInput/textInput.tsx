@@ -38,10 +38,10 @@ export const TextInput = ({
 	}
 
 	return <div className={clsx("td-input-container", isLabelCapitalized && "cap-label", isRequired && "is-required")}>
-		{label && <label>{isRequired && <Asterisk />}{label}</label>}
 		{isTextArea 
 			? <textarea name={name} placeholder={placeholder} rows={textAreaRows} onChange={(e) => handleValueChange(e)} value={value}/>
 			: <input name={name} type={type} placeholder={placeholder} onChange={(e) => handleValueChange(e)} value={value}/>
 		}
+		{label && <label>{isRequired && <Asterisk />}{label}</label>} 
 	</div>
 }
