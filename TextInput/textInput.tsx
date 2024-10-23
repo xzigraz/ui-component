@@ -6,6 +6,7 @@ import Asterisk from "../svgs/asterisk";
 interface TextInputProps {
 	name: string
 	label?: string
+	additionalClassNames?: string
 	isLabelCapitalized?: boolean
 	type?: string
 	min?: string
@@ -21,6 +22,7 @@ interface TextInputProps {
 export const TextInput = ({
 	name,
 	label, 
+	additionalClassNames,
 	isLabelCapitalized = false,
 	type = "text", 
 	min, 
@@ -37,7 +39,7 @@ export const TextInput = ({
 		onValueChange(e);
 	}
 
-	return <div className={clsx("td-input-container", isLabelCapitalized && "cap-label", isRequired && "is-required")}>
+	return <div className={clsx("td-input-container", additionalClassNames && additionalClassNames, isLabelCapitalized && "cap-label", isRequired && "is-required")}>
 		{label && <label>{isRequired && <Asterisk />}{label}</label>}
 		{isTextArea 
 			? <textarea name={name} placeholder={placeholder} rows={textAreaRows} onChange={(e) => handleValueChange(e)} value={value}/>
