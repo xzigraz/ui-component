@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
  * @param ref - Reference to the element to check visibility for.
  * @returns Boolean indicating whether the element is in the current view.
  */
-const isRefInView = (ref: React.RefObject<HTMLElement>) => {
+const useIsRefInView = (ref: React.RefObject<HTMLElement | null>) => {
 	const [isInView, setIsInView] = useState<boolean>(false);
 
 	useEffect(() => {
@@ -38,4 +38,4 @@ const isRefInView = (ref: React.RefObject<HTMLElement>) => {
 	return isInView;
 }
 
-export default isRefInView;
+export default useIsRefInView;
